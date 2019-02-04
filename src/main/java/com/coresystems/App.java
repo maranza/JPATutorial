@@ -15,11 +15,10 @@ import com.coresystems.models.Student;
  */
 public class App 
 {
-	@SuppressWarnings("unused")
-	private static final EntityManagerFactory emFactory;
 	
+	public static final EntityManagerFactory emFactory;
 	static {
-		emFactory = Persistence.createEntityManagerFactory("jpatutorial");
+		emFactory = Persistence.createEntityManagerFactory("com.coresystems_JPATutorial_jar_1.0-SNAPSHOTPU");
 	}
 	
 	private static EntityManager manager = null;
@@ -37,7 +36,7 @@ public class App
 	//TODO: get all students
 	public static void listStudents() {
 		try {
-			manager = emFactory.createEntityManager();
+			manager = emFactory.createEntityManager();	
 			List<Student> students = manager.createNativeQuery("SELECT s FROM Student s", Student.class).getResultList();
 			for (Student student : students) {
 				System.out.println("fistName: " + student.getFirstName() + "lastName: " + student.getLastName());
@@ -57,6 +56,6 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        listStudents();
+//        listStudents();
     }
 }
